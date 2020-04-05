@@ -85,7 +85,7 @@ let pokemon = {
     },
     makeSumWithArgument: function(a,b) {
         let sum = parseInt(a)+parseInt(b)
-        console.log('Summession is '+ sum);
+        console.log('Summession is '+ sum ,this.makeSumWithArgument.arguments);
         return sum;
     },
     getFullPokeName: function() {
@@ -115,6 +115,79 @@ doremon.getDoreData.bind(pokemon,'Doremon','Mkck','Binded')();   //Accepts spred
 // Get sum from pokemon with data existed in doremon
 pokemon.makeSum.apply(doremon);
 pokemon.makeSumWithArgument.apply(pokemon,[400,200]);
-pokemon.makeSumWithArgument.call(pokemon,400,200);
-pokemon.makeSumWithArgument.bind(pokemon,400,200)(); //function call require
-pokemon.makeSumWithArgument.bind(pokemon)(400,200);
+pokemon.makeSumWithArgument.call(pokemon,500,200);
+pokemon.makeSumWithArgument.bind(pokemon,600,200)(); //function call require
+pokemon.makeSumWithArgument.bind(pokemon)(200,200);
+
+
+// arguments
+function demo(a,b){
+    console.log(demo.arguments,demo.arguments[2]);  //returns array of arguments/parameter.Applicable only inside function.
+}
+demo(10,'Stringgggg');
+
+// Assign
+let targetObj = { a : 2323 , b : 11 ,d:'omkar'};
+let sourceObj = { c:'strr',d:'Kalyani'};
+let mixed = Object.assign(sourceObj,targetObj);   //override elements in target with source and change the original target
+console.log(mixed , targetObj,sourceObj);
+
+let myObj= Object.assign({},targetObj,sourceObj,{id:1},{name:'tempName'})    //multiple sources combined into new empty object without change in original object
+console.log(myObj ,targetObj,sourceObj);
+
+let tempObj1 = { a: 0 , b: { c: 0}};
+let tempObj2 = Object.assign({}, tempObj1);
+console.log(tempObj2);
+tempObj1.a=1;
+tempObj2.a=4;
+tempObj2.b.c=21;   //here the reference of object b is stored and hence value changed in both the object 1 and 2
+console.log(tempObj1,tempObj2);
+
+console.log(JSON.stringify(tempObj2));
+console.log(JSON.parse(JSON.stringify(tempObj2)));
+
+// caller
+function firstFun(){
+    console.log('aaz' ,firstFun.caller);  //returns the caller function from where first() is called,otherwise returns null
+}
+function secondFun(){
+    console.log('bbz');
+    firstFun();
+}
+secondFun();
+
+// DefineProperties  - can define multiple properties for specified oject
+let project = { projectName : 'javascript demo' , technology:'js' };
+let createNewVersionKey = {
+    "version": {
+        value:100
+    }
+}
+Object.defineProperties(project, createNewVersionKey )   //Adding third new key "version" to project object;
+
+Object.defineProperties(project,{
+    "changeTechnology":{
+        set:function(params) {          //Creating setter with name "changeTechnology" using defineProperties
+            this.projectName=params.newName
+            this.technology=params.techno
+        }
+    },
+    "angularVersion": {
+        value:200
+    }
+});
+project.changeTechnology={newName:'Angular Demo',techno:'Angular'};
+console.log(project);
+// HW -getter
+
+
+// Defineproperty - can define single property for specified oject
+let kalyaniObj = { address:'Pune', pinCode:411009};
+
+Object.defineProperty(kalyaniObj,"societyName",{
+    value:'abc society'
+});
+
+console.log(kalyaniObj);
+// HW - getter and setter
+
