@@ -174,12 +174,15 @@ Object.defineProperties(project,{
     },
     "angularVersion": {
         value:200
+    },
+    "getProjectName":{
+        get:function() {
+            return this.projectName;
+        }
     }
 });
 project.changeTechnology={newName:'Angular Demo',techno:'Angular'};
-console.log(project);
-// HW -getter
-
+console.log(project,project.getProjectName);
 
 // Defineproperty - can define single property for specified oject
 let kalyaniObj = { address:'Pune', pinCode:411009};
@@ -187,7 +190,71 @@ let kalyaniObj = { address:'Pune', pinCode:411009};
 Object.defineProperty(kalyaniObj,"societyName",{
     value:'abc society'
 });
+Object.defineProperty(kalyaniObj,"getSociety",{
+    get:function() {
+        return this.societyName;
+    }
+});
+Object.defineProperty(kalyaniObj,"changeAddress",{
+    set:function(data) {
+        return this.address=data;
+    }
+});
+console.log(kalyaniObj,kalyaniObj.getSociety,kalyaniObj.changeAddress="Katraj");
 
-console.log(kalyaniObj);
-// HW - getter and setter
+// Freeze  - We cannot change any property and value of object,neither delete nor add;
+let freezeSealObj = {
+    free:'not free',
+    cost:122
+};
+Object.defineProperty(freezeSealObj,"accessories",{
+    value:'cover and bag'
+});
+console.log(' BEFORE ISFREEZE',Object.isFrozen(freezeSealObj));
+Object.freeze(freezeSealObj);
+freezeSealObj.free="asdadasd";   //after freeze we cannot set value and delete value;
+console.log(console.log(' AFTER ISFREEZE',Object.isFrozen(freezeSealObj)));
 
+
+// Seal - we cannot add/delete new property to object but can change value of existing property;
+console.log(' BEFORE SEALed',Object.isSealed(freezeSealObj));
+Object.seal(freezeSealObj);
+console.log(console.log(' AFTER SEALed',Object.isSealed(freezeSealObj)));
+delete freezeSealObj.free;
+freezeSealObj.free = 'Avail in market';
+console.log(freezeSealObj);
+
+console.log(Object.isExtensible(freezeSealObj));
+// Object.defineProperty(freezeSealObj,"isExt",{
+//     value:'EXT'
+// });
+console.log(freezeSealObj, Object.isExtensible(freezeSealObj));
+
+// isExtensible =true === object is not freeze and not sealed
+
+// getOwnPropertyDescriptor
+let propertyDescObj = {
+    userName:'MYUSER',
+    enrollNo:'ENRNO-112',
+    password:'PASSabc@123'
+}
+console.log(Object.getOwnPropertyDescriptor(propertyDescObj,'enrollNo'));
+
+Object.defineProperties(propertyDescObj,{
+    'enrollNo':{
+    // writable:false       // cannot set new value to enrollNO but can delete property
+    configurable:false   // Value can be changed but cannot delete property
+    // enumerable:false     // false= not iterable property in object which changes object length
+},
+'userName':{
+    enumerable:false,
+    value:'NEW_USERNAME_ADDED'
+}});
+// propertyDescObj.enrollNo = "NEW_ENROLL";
+// delete propertyDescObj.enrollNo;
+console.log(propertyDescObj);
+
+Object.keys(propertyDescObj).forEach((ele,index)=>{   //Iterating the objectss
+    console.log(index,ele);
+});
+console.log(`Object Length is-->${Object.keys(propertyDescObj).length} beacuse property 'userName' is enumerable`);
