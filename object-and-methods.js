@@ -242,9 +242,9 @@ console.log(Object.getOwnPropertyDescriptor(propertyDescObj,'enrollNo'));
 
 Object.defineProperties(propertyDescObj,{
     'enrollNo':{
-    // writable:false       // cannot set new value to enrollNO but can delete property
+    // writable:false       // Cannot set new value to enrollNO but can delete property
     configurable:false   // Value can be changed but cannot delete property
-    // enumerable:false     // false= not iterable property in object which changes object length
+    // enumerable:false     // false = not iterable property in object which changes object length
 },
 'userName':{
     enumerable:false,
@@ -254,7 +254,90 @@ Object.defineProperties(propertyDescObj,{
 // delete propertyDescObj.enrollNo;
 console.log(propertyDescObj);
 
-Object.keys(propertyDescObj).forEach((ele,index)=>{   //Iterating the objectss
+Object.keys(propertyDescObj).forEach((ele,index)=>{   //Iterating the object
     console.log(index,ele);
 });
+
+// Find length of object using key()
 console.log(`Object Length is-->${Object.keys(propertyDescObj).length} beacuse property 'userName' is enumerable`);
+
+// getOwnPropertyNames
+console.log(Object.getOwnPropertyNames(propertyDescObj));  //returns array of all the properties in object
+console.log(Object.keys(propertyDescObj));  //returns array of keys which are enumerable=true
+
+// getOwnPropertySymbols
+const symbolObj = {};
+const a = Symbol('a');
+const b = Symbol.for('b');
+const name="mySymbol";
+symbolObj[a] = 'localSymbol';
+symbolObj[b] = 'globalSymbol';
+symbolObj[name] = 'SYM';
+console.log(symbolObj);
+const objectSymbols = Object.getOwnPropertySymbols(symbolObj);
+console.log(objectSymbols); 
+
+// getPrototypeOf
+let firstObj = { prog:'ionic',data:'default'};
+let secondObj = Object.create(firstObj);  //takes the reference of object firstObj
+firstObj.prog = "REact";
+// console.log(firstObj, Object.getPrototypeOf(firstObj));
+// console.log(Object.getPrototypeOf(firstObj).constructor.name);
+// console.log(firstObj.__proto__.constructor.name);
+console.log(Object.getPrototypeOf(firstObj));
+console.log( secondObj,Object.getPrototypeOf(secondObj));
+
+
+// is()  - Compaires 2 object/primitive data and returns boolean
+let compair1 = {
+    name:'comp',
+    id:1
+};
+let compair2 = {
+    name:'comp',
+    id:1
+}
+
+console.log(Object.is(compair1,compair1));   //true - Same Reference and value
+console.log(Object.is(compair1,compair2));   //false - Different Reference
+Object.is('foo', 'foo');     // true
+Object.is(window, window);   // true
+Object.is('foo', 'bar');     // false
+Object.is([], []);           // false
+console.log( NaN, 0/0,typeof NaN === typeof NaN);  //true
+
+
+// Object.isExtensible - Checks whether we can add new proprty/value in object or not?
+let preventObj = {
+color:'Red',
+data:'Stop'
+};
+
+Object.preventExtensions(preventObj);   //Cannot add new proprty in object but can delete property and modify its value
+// Object.defineProperty(preventObj,"newPRop",{
+//     value:'gooo'
+// })
+delete preventObj.color;
+preventObj.color ="Yellow";
+console.log(preventObj,Object.isExtensible(preventObj));
+
+
+// setPrototypeOf
+let setProtoObj = { sampleName:'mnop', lamp:'logic', a:10, b:22 };
+
+let setFunObj = {
+    name:'sum',
+    summmation:function(a,b){
+        return a+b;
+    }
+}
+console.log(setProtoObj,Object.setPrototypeOf(setProtoObj,setFunObj));   //Set setFunObj object to setProtoObj's prototype
+
+console.log(setProtoObj.__proto__.summmation(setProtoObj.a,setProtoObj.b));
+console.log(Object.getPrototypeOf(setProtoObj).summmation(setProtoObj.a,setProtoObj.b));
+
+
+// toString
+console.log(preventObj.toString());
+console.log(JSON.stringify(preventObj));
+
