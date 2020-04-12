@@ -341,3 +341,29 @@ console.log(Object.getPrototypeOf(setProtoObj).summmation(setProtoObj.a,setProto
 console.log(preventObj.toString());
 console.log(JSON.stringify(preventObj));
 
+
+
+// 1. Create new object(firstObj) which having the proto of another object(anotherObj)
+// 2. anotherObj is having function which checks whether given value is even or odd(checkEvenOddFun)
+// 3. Send param for checkEvenOddFun from newly created object (firstObj)
+// 4. Call checkEvenOddFun method from firstObj
+// 5. Cannot change value of firstObj param (externally/set)
+// 6. Store result of checkEvenOddFun in firstObj
+
+// let as = {
+//     asd:function(p){
+//         console.log(p);
+        
+//         return `strinf od ${p}`;
+//     }
+// }
+// let abc ={
+//     name:'sadsd',
+//     id:22,
+// }
+
+// console.log(abc);
+// Object.defineProperty(abc,'result',{
+//     value:as.asd.apply(abc,[abc.id])
+// })
+// console.log(abc);
