@@ -97,7 +97,7 @@ let myArr = [1, 'Sample', 3, 'Skip_me', 5, 'Break_me', 7, 8];
 
 for (let i = 0; i < myArr.length; i++) {
     let element = myArr[i];
-    if (element === 'Skip_me' || element===5) {  //skip element 'Skip ME' and 5 from iteration
+    if (element === 'Skip_me' || element === 5) {  //skip element 'Skip ME' and 5 from iteration
         continue;
     }
     console.log('index is ' + i + ' and element is ' + element);
@@ -115,15 +115,15 @@ for (let i = 0; i < myArr.length; i++) {
 
 
 console.log('_____________BOTH IN ONE MIXED ARRAY______________');
-let mixed = [1,2,3,4,5];    //continue + break 
+let mixed = [1, 2, 3, 4, 5];    //continue + break 
 // We cannot use continue after break;
 for (let index = 0; index < mixed.length; index++) {
     const element = mixed[index];
-    if (element===3) {
+    if (element === 3) {
         sendConsole(element);
         continue;
     }
-    if (element===4) {
+    if (element === 4) {
         break;
     }
 }
@@ -131,15 +131,15 @@ console.log('_____________BOTH IN ONE______________');
 
 for (let index = 0; index < mixed.length; index++) {
     const element = mixed[index];
-    if (element===3) {
+    if (element === 3) {
         sendConsole(3);
         break;
     }
     continue;
 }
 
-function sendConsole(param){
-    console.log('from send Console-->',param);
+function sendConsole(param) {
+    console.log('from send Console-->', param);
 }
 
 
@@ -148,15 +148,15 @@ function sendConsole(param){
 // var toll; =  var toll = undefined;
 
 var toll;  //Global
-function abc(){
-    var toll=5;
-    console.log('Functional scope toll',toll); 
+function abc() {
+    var toll = 5;
+    console.log('Functional scope toll', toll);
 
     function pqr() {
         console.log('nested function');
     }
 }
-console.log('Global toll1',toll);
+console.log('Global toll1', toll);
 
 // Global scope  - Globally declared var and obj are always pointed to the global 'window' object   
 // window.toll = Global scope
@@ -164,3 +164,45 @@ console.log('Global toll1',toll);
 
 // window.abc.toll = functional scope
 // window.abc.pqr = functional scope
+
+
+// ___________NORMAL SCOPING ___________
+
+// var a = 10;
+// function first() {
+//     console.log('a is ', a);
+//     var b = 20;
+
+//     second();
+//     function second() {
+//         var c = 30;
+//         console.log('a , b and c', a, b, c);    
+//     }
+
+//     console.log(a,b);
+// }
+// console.log(a);
+// first();
+
+// ___________LEXICAL SCOPING ___________
+// This keyword - This always points to the Global window object
+var a = 10;
+function first() {
+    var b= 20;
+    second();
+
+    function second() {
+        var c =30;
+        third();   //lexical
+        console.log(a,b,c);
+        console.log('Second fun this',this);
+    }
+    console.log(a,b);
+    console.log('First fun this',this);
+}
+
+function third() {
+    var d = 40;
+    console.log(a,d);
+}
+first();
