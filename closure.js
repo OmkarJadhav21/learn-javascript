@@ -35,4 +35,6 @@ function calcualteRetirement(retirementAge) {
 }
 let retirementPeriod  = calcualteRetirement(66);
 var message = retirementPeriod(1994);
+            // OR
+// calcualteRetirement(66)(1994);
 console.log('message--->',message);
