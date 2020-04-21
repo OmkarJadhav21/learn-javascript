@@ -7,9 +7,17 @@ var resultttt;
 function sum(a, b) {
     return a + b;
 }
+function substract(a, b,subsCallback) {
+    return subsCallback(a - b);
+}
+function getSubstractionResult(result) {
+    console.log('Result  for Substraction is - callback ', result);
+    return result;
+}
 function getSumResult(result) {
     console.log('Result  for sum is - callback ', result, resultttt);
 }
+
 // _____________ Callback function ______________
 function calcualteSumUsingCallback(f, s, callbackFun, sendResultCallBack) {
     console.log('entered');
@@ -18,10 +26,13 @@ function calcualteSumUsingCallback(f, s, callbackFun, sendResultCallBack) {
             firstValue: f + 2,
             secondValue: s + 2
         }
-        resultttt = callbackFun(response.firstValue, response.secondValue);  // Callback function
+        resultttt = callbackFun(response.firstValue, response.secondValue);  // Callback function for Sum
         sendResultCallBack(resultttt);
         // OR
         // sendResultCallBack(callbackFun(response.firstValue, response.secondValue));    //used to avoid excessive variable    
+        
+        let subRsult = substract(f,s,getSubstractionResult);
+        console.log("subRsult",subRsult);
     }, 1000);
 }
 calcualteSumUsingCallback(100, 300, sum, getSumResult);
