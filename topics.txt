@@ -1,0 +1,32 @@
+--------------Javascript Topics--------------
+
+1. Data types - Primitive and Non-Primitive
+2. Type Coercion
+3. Variable Mutation
+4. Basic Operator
+5. Operator Precedence
+6. Multiple Assignement
+7. Equality Operator
+8. Ternary Operator
+9. If else Statement
+10. Switch Case
+11. Truthy and Falsy Values
+12. Declaration/Initialization/Assignement/Execution
+13. Functions Statements and Expressions - Declaration types and Execution
+14. Array - Creation Types and Methods in detail
+15. Object & properties - Creation types and Methods in detail
+16. Loops and Statements - For Loop( ForOf, ForIn, ForEach for object and array), While Loop, Do-While Loop, Break and Continue Statements
+17. Javacript Execution and Parser - Creation and Execution phases
+18. How JS project start and execute
+19. Hoisting in JS
+20. Difference between Let, Var, Const
+21. Scoping and Scoping Chain - Scoping, Lexical
+22. This Keyword and it's uses in scoping
+23. Dom Manipulation - document, Adding external css file in project and Functions uses in html
+24. IIFE - Immediately Invoked Function Expression
+25. Closures
+26. Callback Function
+27. Currying
+28. Memoization
+29. Promises - Creation and it's Methods
+30. Async/Await clause - Async JS
