@@ -5,7 +5,7 @@
 
 function processData() {
     let cachedResult = {};  // Main object which stores cached result;
-    console.log('ProceDATA function called...');
+    console.log('ProcessData function called...');
     return (numb) => {
         if (numb in cachedResult) {
             console.log('Fetching result from cache....', cachedResult);
