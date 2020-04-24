@@ -30,7 +30,7 @@ function factorial(n) {
     console.log('factorial called......');
     
     let cachedResult = {};
-    if (n <= 0) {
+    if (n <= 0) { //Stopping condition
         return 1;
     }
     if (n in cachedResult) {
@@ -79,4 +79,3 @@ console.log('finalRes',fact(4),fact(5));
 // = 5 x fact(4) 
 // = 5 X 24
 // = 120 === 5!
-
