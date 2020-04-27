@@ -42,4 +42,4 @@ console.log('RESULT', power(2, 4), power(4, 3));
 // 6
 
 
-// Fibonacci series - eg - 1,1,2,3,5,8,13,21,34
+// Fibonacci series - eg - 1,1,2,3,5,8,13,21,34 -Hw-done
