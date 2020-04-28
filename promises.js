@@ -5,7 +5,7 @@
 // CODE AFTER RESOLVED/REJECT IS NOT EXECUTED/IGNORED
 
 
-// Creation
+// ***** Creation ******
 let promise1 = new Promise((resolve, reject) => { } //1
     // resolve = If job finished successfully
     // reject = If error occured
@@ -28,6 +28,9 @@ console.log(promise1);
 */
 
 
+
+
+
 //Fibonacci Series in prmoises
 function calcualte(n) {
     return new Promise((resolve, rej) => {
@@ -46,10 +49,14 @@ function calcualte(n) {
 
 calcualte(8).then(res => { // .then - used to handle success after promise completion
     var result = res;
-    console.log('Final Fibonacci series', res)
+    // console.log('Final Fibonacci series', res)
 }).catch(error => {  //.catch - Used to handle only errors
-    console.log(error);
+    // console.log(error);
 })
+
+
+
+
 
 
 // Basic example
@@ -58,10 +65,12 @@ let promo = new Promise((reso, rej) => {
         reso("All done,,,")
     }, 260);
 });
-console.log(promo);  //prints a promise
+// console.log(promo);  //prints a promise
 promo.then((successPromise, rejectedPromoise) => { //.then - is used to get value from promise
-    console.log(successPromise);
+    // console.log(successPromise);
 })
+
+
 
 
 
@@ -129,7 +138,7 @@ function promiseGetWord(parityInfo) {
     .then(determineParity, troubleWithGetNumber)
     .then(promiseGetWord)
     .then((info) => {
-        console.log("Got: ", info.theNumber, " , ", info.wordEvenOdd);
+        // console.log("Got: ", info.theNumber, " , ", info.wordEvenOdd);
     })
     .catch((reason) => {  // .catch = Only used for error handling
         if (reason === -999) {
@@ -141,7 +150,7 @@ function promiseGetWord(parityInfo) {
         return 'donnnneee'
     })
     .finally((info) => {
-        console.log("All done")
+        // console.log("All done")
     });  // .finally used when all the promise is settled
 
 
@@ -185,7 +194,7 @@ function testPromise() {
     }).catch(
         // Log the rejection reason
         (reason) => {
-            console.log('Handle rejected promise (' + reason + ') here.');
+            // console.log('Handle rejected promise (' + reason + ') here.');
         });
 
     log.insertAdjacentHTML('beforeend', thisPromiseCount +
@@ -193,3 +202,43 @@ function testPromise() {
 }
 
 testPromise();
+
+
+
+
+
+
+
+// **** METHODS ***** 
+
+// Promise.resolve()  - return new resolved promise.
+let prom = Promise.resolve([1, 23]);
+
+// Promise.reject()  - return new rejected promise.
+let rej = Promise.reject(new Error('we accept only oject'));
+
+// Promise.race()  - return faster executed promise
+let pro1 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res({ message: 'promise 1 resolved late' });
+    }, 2000);
+});
+
+let pro2 = new Promise((res, rej) => {
+    setTimeout(() => {
+        rej(new Error({ messge: 'promise 2 resolved faster' }));
+    }, 500);
+})
+let fasterExecutedPromise = Promise.race([pro1, pro2]);
+fasterExecutedPromise.then(faster=>console.log(faster));
+
+/* Promise.all() - This method accepts promise/non-promise.resolved promise. only the method returns a single Promise that fulfills when 
+ all of the promises passed as an iterable have been fulfilled or when the iterable contains no promises or when the iterable 
+ contains promises that have been fulfilled and non-promises that have been returned. */
+let waitForAllDone = Promise.all([pro1, pro2]);
+waitForAllDone.then(done=>console.log(done));
+
+// Promise.allSettled() - Will accepts only promises and returns the new promise when all the promises have either resolved or rejected.
+let suceesOrError = Promise.allSettled([pro1, pro2])
+suceesOrError.then(res => console.log(res));
+
