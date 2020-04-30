@@ -230,15 +230,14 @@ let pro2 = new Promise((res, rej) => {
     }, 500);
 })
 let fasterExecutedPromise = Promise.race([pro1, pro2]);
-fasterExecutedPromise.then(faster=>console.log(faster));
+fasterExecutedPromise.then(faster => console.log(faster));
 
 /* Promise.all() - This method accepts promise/non-promise.resolved promise. only the method returns a single Promise that fulfills when 
  all of the promises passed as an iterable have been fulfilled or when the iterable contains no promises or when the iterable 
  contains promises that have been fulfilled and non-promises that have been returned. */
 let waitForAllDone = Promise.all([pro1, pro2]);
-waitForAllDone.then(done=>console.log(done));
+waitForAllDone.then(done => console.log(done));
 
 // Promise.allSettled() - Will accepts only promises and returns the new promise when all the promises have either resolved or rejected.
 let suceesOrError = Promise.allSettled([pro1, pro2])
 suceesOrError.then(res => console.log(res));
-
