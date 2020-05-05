@@ -30,3 +30,18 @@
 28. Memoization
 29. Promises - Creation and it's Methods
 30. Async/Await clause - Async JS
+31. Recursion / Recursive Functions
+32. What is new in es6(es2015)
+   - 1. Variable declaration with let and const
+   - 2. IIFE'S
+   - 3. Strings
+   - 4. Arrow Function
+   - 5. Destructuring
+   - 6. Arrays
+   - 7. Spread Opertor
+   - 8. Rest Parameter
+   - 9. Default Parameter
+33. Maps and it's Methods
+34. Classes
+35. Sub-Classes
+
