@@ -134,7 +134,7 @@ function promiseGetWord(parityInfo) {
     return new Promise(tetheredGetWord);
 }
 
-(new Promise(tetheredGetNumber))//4
+(new Promise(tetheredGetNumber))//4-callback hell
     .then(determineParity, troubleWithGetNumber)
     .then(promiseGetWord)
     .then((info) => {
@@ -241,3 +241,52 @@ waitForAllDone.then(done => console.log(done));
 // Promise.allSettled() - Will accepts only promises and returns the new promise when all the promises have either resolved or rejected.
 let suceesOrError = Promise.allSettled([pro1, pro2])
 suceesOrError.then(res => console.log(res));
+
+
+
+//___________ Callback Hell ____________
+
+function hell1() {
+    let arr = [12, 4, 5, 6];
+    return new Promise(resolve => {
+        resolve(arr); //returns array
+    })
+}
+function hell2(data) {
+    return new Promise(resolve => {
+        let cond = ele => ele > 10;
+        let filterd = data.filter(cond);
+        resolve(filterd)  //filtered array
+    })
+}
+function hell3(params) {
+    return new Promise(res => {
+        res(params.length) //find length of array
+    })
+}
+function hell4(resolve) {
+    let arr = [12, 4, 5, 6];
+    resolve(arr) //find length of array
+}
+
+hell1().then(res => {
+    hell2(res).then(filteredData => {
+        hell3(filteredData).then(finalLength => alert(`Final filtered array length is -${finalLength}`))
+    })
+})  //This is the callback hell and to solve this problem we can use chaining of promises (.then)
+
+
+// Chaining for above eg- if function returns promise
+hell1()
+    .then(orginalArr => hell2(orginalArr))
+    .then(filteredData => hell3(filteredData))
+    .then(finalData => alert(`Final filtered array length is ->>${finalData}`))
+
+// Chaining for above eg- if function doesn't return promise
+    (new Promise(hell4))
+    .then(orginalArr => hell2(orginalArr))
+    .then(filteredData => hell3(filteredData))
+    .then(finalData => alert(`Final filtered array length is ->>${finalData}`))
+
+
+

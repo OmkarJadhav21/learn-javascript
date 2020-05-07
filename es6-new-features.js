@@ -8,7 +8,9 @@
     6. Arrays
     7. Spread Opertor
     8. Rest Parameter
-    9. Default Parameter 
+    9. Default Parameter
+    10. Maps
+    11. Classes and Sub-classes
 */
 
 //-1) __________Variable declaration with let and const _________
@@ -200,7 +202,7 @@ array1 = { ...sampleObj1 }
 // This cannot be worked in typescript
 console.log('Changed type for array1-->', array1, sampleObj1);
 
-// Spreading values in function call
+// Spreading values in function call using array
 let valuesToAdd = [11, 22, 33];
 
 function sum(a, b, c, d) {
@@ -209,6 +211,16 @@ function sum(a, b, c, d) {
 }
 sum(...valuesToAdd, 44);  // Correct way
 sum([...valuesToAdd], 44);  // Wrong way
+
+
+// Spreading values in function call using object
+let samplObj = { q: 2, e: 3 };
+function add(a, b) {
+    return a + b;
+}
+let addition = add(...Object.values(samplObj));
+console.log('addition', addition);
+
 
 // Concat two array/obj using spread 
 let conc1 = ['a', 'b', 'c', 'd'];
@@ -256,3 +268,5 @@ function Person(name, age, dob = 1994) {
     console.log('Sum Zero -->', name, age, dob);
 }
 Person('Omkar', 25, 1992);
+
+
