@@ -1,4 +1,4 @@
-var name;   //declartion / Initialization(default undefined)
+var name;   //declartion (default undefined)
 name='omkar';  ///value assignent
 
 var age = 'twenty';   //Initialization

@@ -135,7 +135,7 @@ console.log('EVERY -', rightArray.every(myCondition));  //Whether EACH element s
 // console.log('descending',descending); //descending
 let deletedData = rightArray.splice(2,3)
 console.log('deletedData',rightArray, deletedData);   //returns the deleted array and delete from original array
-console.log(arrayFirst.toLocaleString('hi-IN', { style: 'currency', currency: 'INR' }));  //convsert array to single Local string;
+console.log(arrayFirst.toLocaleString('hi-IN', { style: 'currency', currency: 'INR' }));  //convert array to single Local string;
 console.log(arrayFirst.toString());  //convert array to single string
 console.log(arrayFirst.values());  //returns iterable of 'values' in array
 console.log(arrayFirst.keys());  //returns iterable of 'keys' in array

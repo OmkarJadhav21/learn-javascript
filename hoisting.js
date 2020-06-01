@@ -39,11 +39,11 @@ var name; */
 // console.log('name is ',name);
 // let name;
 
-// pie =3.14;  //Missing initializer in const declaration
+// pie =3.14;  //Missing initializer in const declaration-error
 // console.log(pie);
 // const pie;
 
-// console.log(pie); // Cannot access 'pie' before initialization error
+// console.log(pie); // Cannot access 'pie' before initialization- error
 // const pie = 3.14;
 
 // var confuse;
