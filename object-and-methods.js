@@ -236,7 +236,10 @@ console.log(freezeSealObj, Object.isExtensible(freezeSealObj));
 let propertyDescObj = {
     userName:'MYUSER',
     enrollNo:'ENRNO-112',
-    password:'PASSabc@123'
+    password:'PASSabc@123',
+    met:function(params) {
+        return params
+    }
 }
 console.log(Object.getOwnPropertyDescriptor(propertyDescObj,'enrollNo'));
 

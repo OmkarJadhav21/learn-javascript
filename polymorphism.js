@@ -2,7 +2,8 @@
 // poly -many  morphism-forms   -  To create polymorphism we require inheritance and same name method.
 
 class PersonPoly {
-    constructor(name, age,fun) {
+     data = 'sadsad'
+    constructor(name, age, fun) {
         this._name = name;
         this._age = age;
         this.sumOfTwoNumbers = fun;
@@ -15,9 +16,9 @@ class PersonPoly {
 
 class Employee extends PersonPoly {
     constructor(name, age, dob) {
-        super(name, age,function sum(a,b) {
-            console.log('Sum is -->',a+b);
-            return a+b;
+        super(name, age, function sum(a, b) {
+            console.log('Sum is -->', a + b);
+            return a + b;
         });
         this._dob = dob;
     }
@@ -26,16 +27,17 @@ class Employee extends PersonPoly {
         console.log("Im " + this._name + ", with age  " + this._age + ", born in " + this._dob)
     }
 
-    parentShowMethod(){
+    parentShowMethod() {
         super.showInfo();
     }
 }
 
 var myPersonPoly = new PersonPoly('Gaddar', 20);
-var myEmployee = new Employee('Johny',25, 1994);
-console.log(myEmployee);
+var myEmployee = new Employee('Johny', 25, 1994);
+console.log(myEmployee instanceof PersonPoly);  //use of instanceof keyword;
+console.log(myEmployee, Object.getOwnPropertyNames(PersonPoly.prototype));
 
-myEmployee.sumOfTwoNumbers(10,12); //passing function as params
+myEmployee.sumOfTwoNumbers(10, 12); //passing function as params
 myEmployee.showInfo();  //invoke method from child
 myEmployee.parentShowMethod();  //invoke method from parent
 // Or

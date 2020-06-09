@@ -4,10 +4,14 @@
 // 2. function overloading
 // 3. Interface
 
+// Access specifier types -
+// 1. public - Access all over
+// 2. private - Can be accessed only within the class not in instance and inheritance
+// 3. protected = Can be accessed only within the class and it's inheritance.
 
 // 1. Function Overriding --
 class Parent {
-    name: string;
+    protected name: string;
     constructor(name: string) {
         this.name = name;
     }
@@ -15,8 +19,9 @@ class Parent {
         console.log('processName method in parent class', this.name)
     }
 }
+
 class Child extends Parent {
-    name:string;
+    name: string;
     constructor(name: string) {
         super(name);
     }
@@ -24,12 +29,19 @@ class Child extends Parent {
         console.log('processName method in Child class', this.name)
     }
 }
+class Sample extends Child {
+    constructor(a) {
+        super(a);
+    }
+    sampleData = 'sample'
+}
 
-let myObject1 = new Parent("john");
+let myObject1 = new Parent("john"); //Instance of parent
 myObject1.processName();
 
-let myObject = new Child("Kiran");
-myObject.processName();
+let myChild = new Child("Kiran");
+myChild.processName();
+
 
 
 
@@ -87,3 +99,15 @@ class BlueTheme implements Activity {
         console.log('Color changed to Blue');
     }
 }
+
+
+
+let sam = new Sample('nae');
+
+// Instanceof requires only class at right hand to compair with left
+console.log('===>>>Parent', myObject1 instanceof Parent);
+console.log('===>>>Child+parent', myChild instanceof Parent);
+console.log('===>>>Child', myChild instanceof Child);
+console.log('===>>>SamplePAr', sam instanceof Parent);
+console.log('===>>>SampleChild', sam instanceof Child);
+console.log('===>>>Sample Own', sam instanceof Sample);

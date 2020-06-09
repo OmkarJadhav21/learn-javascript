@@ -16,6 +16,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+// Access specifier types -
+// 1. public - Access all over
+// 2. private - Can be accessed only within the class not in instance and inheritance
+// 3. protected = Can be accessed only within the class and it's inheritance.
 // 1. Function Overriding --
 var Parent = /** @class */ (function () {
     function Parent(name) {
@@ -36,10 +40,19 @@ var Child = /** @class */ (function (_super) {
     };
     return Child;
 }(Parent));
-var myObject1 = new Parent("john");
+var Sample = /** @class */ (function (_super) {
+    __extends(Sample, _super);
+    function Sample(a) {
+        var _this = _super.call(this, a) || this;
+        _this.sampleData = 'sample';
+        return _this;
+    }
+    return Sample;
+}(Child));
+var myObject1 = new Parent("john"); //Instance of parent
 myObject1.processName();
-var myObject = new Child("Kiran");
-myObject.processName();
+var myChild = new Child("Kiran");
+myChild.processName();
 // 2. Function Overloading --
 var MyClass = /** @class */ (function () {
     function MyClass() {
@@ -75,3 +88,11 @@ var BlueTheme = /** @class */ (function () {
     };
     return BlueTheme;
 }());
+var sam = new Sample('nae');
+// Instanceof requires only class at right hand to compair with left
+console.log('===>>>Parent', myObject1 instanceof Parent);
+console.log('===>>>Child+parent', myChild instanceof Parent);
+console.log('===>>>Child', myChild instanceof Child);
+console.log('===>>>SamplePAr', sam instanceof Parent);
+console.log('===>>>SampleChild', sam instanceof Child);
+console.log('===>>>Sample Own', sam instanceof Sample);
