@@ -53,6 +53,9 @@ class MyClass {
     }
 
     mymethod(name?: string | number) {
+        // 1. this function accepts string parameter
+        // 2. May not accepts parameter.
+        // 3. Accepts number params
         console.log('method with string argument');
     }
 }
