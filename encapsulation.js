@@ -15,7 +15,7 @@ The JavaScript Encapsulation is a process of binding the data (i.e. variables)
 // How can you write constructor without a class?  Answer-->
 
 function BankConstructor(balence) {  //constructor
-    let _balence = balence;
+    var _balence = balence;
 
     getBal = () => { return _balence }
     setBal = (updated) => {
@@ -38,7 +38,6 @@ class Bank {
 
     constructor(accType, branch) {
         this._mainBalence = 0;
-
         Bank._accountType = accType; //Cannot accessible in instances, only avail in main class
         this._branch = branch;  // Can be accessed in instances and main class also.
     }
