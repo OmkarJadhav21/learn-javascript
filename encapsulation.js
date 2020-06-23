@@ -8,7 +8,10 @@ The JavaScript Encapsulation is a process of binding the data (i.e. variables)
  */
 
 
-
+// _______________________________________________
+// Access Specifier - public, private, protected
+// Accessor functions - get (Getter), set (Setter) 
+// _______________________________________________
 
 
 // 1. Use var keyword to make data members private.
@@ -26,7 +29,7 @@ function BankConstructor(balence) {  //constructor
 }
 
 let bankCon = new BankConstructor(0);
-bankCon.setBal = 100
+bankCon.setBal = 100;
 // bankCon._balence  //not accessible
 console.log(bankCon._balence);
 
