@@ -42,13 +42,14 @@
    - 8. Rest Parameter
    - 9. Default Parameter
 33. Maps and it's Methods
-34. Classes
-35. Sub-Classes
-36. OOP's Concept-
+34. WeakMap and it's Methods
+35. Classes
+36. Sub-Classes
+37. OOP's Concept-
    - 1. Inheitance
    - 2. Polymorphism
    - 3. Encapsulation
    - 4. Abstraction
-37. 
+38. 
 
 

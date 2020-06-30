@@ -4,6 +4,8 @@
 - Map accepts either object/primitive values as a key.
 - Map is iterable
 - Map remembers the original insertion order of the keys.
+- Map doesn't handle garbage collection wisely - It will not delete reference from map
+
 */
 
 
@@ -68,15 +70,25 @@ console.log(map.has('id'));  //T
 
 
 // keys - Returns size for map
-console.log(map.size);  
+console.log(map.size);
 
 
+// Map - garbage collection not handled well-
+let garbageMap = new Map();
+let sampleObj = { sap: 'technology', field: 'business' };
+
+garbageMap.set(sampleObj, 'myValll');
+console.log('garbageMap before deleting reference', garbageMap, garbageMap.get(sampleObj));
+sampleObj = null;
+garbageMap.forEach(ele => console.log('We can access--', ele));  //though the reference of sample object is cleared ,but still it is accessible inside the map in foreach
+console.log('keys', garbageMap.keys());
+console.log('garbageMap after deleting reference', garbageMap, garbageMap.get(sampleObj));
 
 
 
 
 /*
-INTERVIEW QUE - Return an subArray with its first and last Index which having maximum sum.
+INTERVIEW QUE - Return an subArray (with its first and last Index which) having maximum sum.
 let ar = [-4, 5, -2, 6, -1, 7, 3, -2, 8];
 let sub = [];
 let total = 0;
