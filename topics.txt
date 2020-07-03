@@ -50,6 +50,8 @@
    - 2. Polymorphism
    - 3. Encapsulation
    - 4. Abstraction
-38. 
+38. Set and it's Methods
+39. WeakSet and it's Methods
+40.Typed Array and it's Methods
 
 
